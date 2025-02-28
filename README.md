@@ -1,7 +1,7 @@
 # HikeRecommendations
 This is a Shiny R Dashboard with an interactive map of hike recommendations in the Greater Vancouver Area based on my personal experience
 
-**Link to the dashboard**: https://0wsp08-riya-eliza.shinyapps.io/WineQualityPrediction/
+**Link to the dashboard**: 
 
 ## About
 This Shiny dashboard provides ...
