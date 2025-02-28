@@ -1,0 +1,11 @@
+name: 'hike_recommender'
+channels:
+  - conda-forge
+dependencies:
+  - ipykernel
+  - r-base
+  - r-languageserver
+  - r-plotly
+  - r-shiny
+  - r-tidyverse
+  - r-leaflet

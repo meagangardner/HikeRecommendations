@@ -15,7 +15,7 @@ library(readxl)
 ```
 
 ```{r}
-hikes <- read_excel('data/Hike_database.xlsx')
+hikes <- read_excel('../data/Hike_Database.xlsx')
 hikes
 ```
 
@@ -36,7 +36,7 @@ icon_list <- awesomeIcons(
 )
 
 leaflet(hikes) |> 
-  setView(lng = -121.5216, lat = 49.727, zoom = 7) |> 
+  setView(lng = -121.5216, lat = 49.727, zoom = 8) |> 
   addTiles() |> 
   addAwesomeMarkers(~longitude, ~latitude, 
                     icon = icon_list,
