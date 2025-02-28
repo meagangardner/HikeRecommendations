@@ -1,0 +1,51 @@
+---
+title: "hike_recommendations"
+output: html_document
+date: "2025-02-26"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(leaflet)
+library(readxl)
+```
+
+```{r}
+hikes <- read_excel('data/Hike_database.xlsx')
+hikes
+```
+
+```{r}
+icon_list <- awesomeIcons(
+  icon = 'map-marker',
+  library = 'fa',  # FontAwesome icons
+  markerColor = case_when(
+    hikes$region == "Golden Ears" ~ "red",
+    hikes$region == "Metro Vancouver" ~ "blue",
+    hikes$region == "Whistler" ~ "green",
+    hikes$region == "Fraser Valley" ~ "purple",
+    hikes$region == "Manning Park" ~ "orange",
+    hikes$region == "Pemberton" ~ "pink",
+    hikes$region == "Howe Sound" ~ "beige",
+    TRUE ~ "gray"  # Default color if region is unknown
+  )
+)
+
+leaflet(hikes) |> 
+  setView(lng = -121.5216, lat = 49.727, zoom = 7) |> 
+  addTiles() |> 
+  addAwesomeMarkers(~longitude, ~latitude, 
+                    icon = icon_list,
+                    label = ~hike_name,
+                    popup = ~paste0("<b>", hike_name, "</b><br>",
+                                    "Distance: ", distance_km, " km<br>",
+                                    "Elevation Gain: ", elevation_gain_m, " m<br>",
+                                    "Time: ", time_hours, " hours"))
+
+
+
+```
