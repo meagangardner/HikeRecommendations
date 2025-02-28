@@ -7,7 +7,7 @@ library(dplyr)
 library(readxl)
 
 # Read in hikes data
-hikes <- read_excel('../data/Hike_database.xlsx')
+hikes <- read_excel('data/Hike_Database.xlsx')
 
 # Create UI
 ui <- fluidPage(
