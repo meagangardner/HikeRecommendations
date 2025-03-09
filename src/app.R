@@ -11,7 +11,20 @@ hikes <- read_excel('data/Hike_Database.xlsx')
 
 # Create UI
 ui <- fluidPage(
-  titlePanel("Hiking Map"),
+  tags$head(
+    tags$style(HTML("
+      body {
+        background-color: #a8d5ba;
+      }
+    "))
+  ),
+
+  titlePanel(tags$div("Greater Vancouver Hiking Map", 
+                    style = "text-align: center; 
+                             background-color: #a8d5ba; 
+                             color: black; 
+                             padding: 10px; 
+                             font-size: 32px;")),
   
   sidebarLayout(
     sidebarPanel(
@@ -24,15 +37,22 @@ ui <- fluidPage(
                   value = c(min(hikes$elevation_gain_m), max(hikes$elevation_gain_m)),
                   step = 10),
       selectInput("difficulty", "Difficulty", 
-                  choices = c("All" = "All", unique(hikes$difficulty)), selected = "All"),
+            choices = c("All", "Easy", "Moderate", "Difficult", "Very Difficult"), 
+            selected = "All"),
+      #selectInput("difficulty", "Difficulty", 
+      #            choices = c("All" = "All", unique(hikes$difficulty)), selected = "All"),
       selectInput("time", "Time (hours)", 
-                  choices = c("All" = "All", unique(hikes$time_hours)), selected = "All"),
+            choices = c("All", "0 - 2", "2 - 4", "4 - 6", "6 - 8", "8+"), 
+            selected = "All"),
+      #selectInput("time", "Time (hours)", 
+      #            choices = c("All" = "All", unique(hikes$time_hours)), selected = "All"),
       selectInput("season", "Season", 
-                  choices = c("All" = "All", unique(hikes$season)), selected = "All")
+                  choices = c("All" = "All", unique(hikes$season)), selected = "All"),
+      style = "height: 500px; overflow-y: auto;"
     ),
     
     mainPanel(
-      leafletOutput("map")
+      leafletOutput("map", height = "500px")
     )
   )
 )
@@ -62,7 +82,7 @@ server <- function(input, output, session) {
     # Create the leaflet map
     leaflet(data) |>
       addTiles() |>
-      setView(lng = -121.5216, lat = 49.727, zoom = 8) |>
+      setView(lng = -121.5216, lat = 49.85, zoom = 8) |> 
       addAwesomeMarkers(~longitude, ~latitude, 
                         icon = awesomeIcons(
                           icon = 'map-marker',
@@ -84,7 +104,7 @@ server <- function(input, output, session) {
                                     "Time: ", time_hours, " hours")
       )
   })
-  
+
 }
 
 # Run the app

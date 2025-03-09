@@ -1,7 +1,7 @@
 # HikeRecommendations
 This is a Shiny R Dashboard with an interactive map of hike recommendations in the Greater Vancouver Area based on my personal experience
 
-**Link to the dashboard**: 
+**View the dashboard [here](https://meagangardner-hikerecommendations.share.connect.posit.cloud/)**
 
 ## About
 This Shiny dashboard provides ...
@@ -16,23 +16,23 @@ The motivation behind this dashboard is to provide personal hike suggestions in 
 
 ## Installation Instructions
 
-1.**Clone the repository**:
+1. **Clone the repository**:
 ```
 git clone https://github.com/meagangardner/HikeRecommendations.git
 ```
 
-2.**Install the environment**:
+2. **Install the environment**:
 ```
 conda env create --hike_recommender --file=environment.yaml
 ```
 
-3.**Activate the environment**:
+3. **Activate the environment**:
 ```
 conda activate hike_recommender
 ```
-4.**To run the app from your terminal use**:
+4. **To run the app from your terminal use**:
 ```
 Rscript src/app.R
 ```
-5.**Access the app**:
+5. **Access the app**:
 Once the app is running, you can access it by opening a web browser and navigating to the address provided in the terminal output. By default, it should be something like `http://127.0.0.1:5030`.
