@@ -15,6 +15,8 @@ This Shiny dashboard is designed for anyone who loves the outdoors and wants to 
 - **Icons:** Users can click on the maps Icon's to get more details about the trail, including name, exact hiking distance and elevation gain, and completion time.
 - **User-friendly interface:** The app is designed to be simple and intuitive, making it easy for users to find and explore hiking options.
 
+![gif](./img/demo.gif)
+
 ## Installation Instructions
 
 1. **Clone the repository**:
