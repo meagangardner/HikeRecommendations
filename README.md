@@ -3,16 +3,17 @@ This is a Shiny R Dashboard with an interactive map of hike recommendations in t
 
 **View the dashboard [here](https://meagangardner-hikerecommendations.share.connect.posit.cloud/)**
 
-## About
-This Shiny dashboard provides ...
-
 ## Motivation
 
-The motivation behind this dashboard is to provide personal hike suggestions in the Greater Vancouver and surrounding areas. Please note that this is based on my personal experience and should be treated as a good starting point for hikes. However you should still do your own research before making a decision to attempt a new hike!
+This Shiny dashboard is designed for anyone who loves the outdoors and wants to explore hiking trails in the Greater Vancouver area. It provides an interactive map displaying key trail information such as distance, elevation gain, difficulty, and estimated time to complete. Users can filter hikes by various criteria, including difficulty, distance, season, and elevation gain. The goal of this app is to offer personalized hike suggestions based on my own experiences, helping users discover suitable trails for their preferences and fitness levels.
 
-## App description
+**Please Note:** The recommendations are based on my own hiking experiences and are intended as a good starting point. However, please remember that hiking conditions can change, and it is always important to do your own research, check current trail conditions, and plan ahead before heading out on a hike!
 
-
+## Key App Features
+- **Interactive map:** Explore hike locations with markers that show the trail's key details.
+- **Filter options:** Filter hikes based on distance, elevataion gain, difficulty, estimated completion time, and season.
+- **Icons:** Users can click on the maps Icon's to get more details about the trail, including name, exact hiking distance and elevation gain, and completion time.
+- **User-friendly interface:** The app is designed to be simple and intuitive, making it easy for users to find and explore hiking options.
 
 ## Installation Instructions
 
