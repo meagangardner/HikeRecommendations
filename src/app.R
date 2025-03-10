@@ -24,7 +24,9 @@ ui <- fluidPage(
                              background-color: #a8d5ba; 
                              color: black; 
                              padding: 10px; 
-                             font-size: 32px;")),
+                             font-size: 40px;
+                             font-family: 'Montserrat', sans-serif;
+                             font-weight: bold;")),
   
   sidebarLayout(
     sidebarPanel(
@@ -42,17 +44,17 @@ ui <- fluidPage(
       #selectInput("difficulty", "Difficulty", 
       #            choices = c("All" = "All", unique(hikes$difficulty)), selected = "All"),
       selectInput("time", "Time (hours)", 
-            choices = c("All", "0 - 2", "2 - 4", "4 - 6", "6 - 8", "8+"), 
+            choices = c("All", "0 – 2", "2 – 4", "4 – 6", "6 – 8", "8+"), 
             selected = "All"),
       #selectInput("time", "Time (hours)", 
       #            choices = c("All" = "All", unique(hikes$time_hours)), selected = "All"),
       selectInput("season", "Season", 
                   choices = c("All" = "All", unique(hikes$season)), selected = "All"),
-      style = "height: 500px; overflow-y: auto;"
+      style = "height: 575px; overflow-y: auto;"
     ),
     
     mainPanel(
-      leafletOutput("map", height = "500px")
+      leafletOutput("map", height = "575px")
     )
   )
 )
@@ -82,7 +84,7 @@ server <- function(input, output, session) {
     # Create the leaflet map
     leaflet(data) |>
       addTiles() |>
-      setView(lng = -121.5216, lat = 49.85, zoom = 8) |> 
+      setView(lng = -122.2, lat = 49.5, zoom = 9) |>  #lng = -121.5216, lat = 49.85, zoom = 8
       addAwesomeMarkers(~longitude, ~latitude, 
                         icon = awesomeIcons(
                           icon = 'map-marker',
@@ -101,9 +103,23 @@ server <- function(input, output, session) {
                         popup = ~paste0("<b>", hike_name, "</b><br>",
                                     "Distance: ", distance_km, " km<br>",
                                     "Elevation Gain: ", elevation_gain_m, " m<br>",
-                                    "Time: ", time_hours, " hours")
+                                    "Time: ", time_hours, " hours"),
+                        layerId = ~hike_name
       )
   })
+  # Zoom in based on marker click
+  observeEvent(input$map_marker_click, {
+    click <- input$map_marker_click
+    leafletProxy("map") %>%
+      setView(lng = click$lng, lat = click$lat, zoom = 11)
+  })
+
+  # Zoom back out when the user clicks anywhere on the map
+  observeEvent(input$map_click, {
+    leafletProxy("map") %>%
+      setView(lng = -121.5216, lat = 49.85, zoom = 8)
+  })
+
 
 }
 
